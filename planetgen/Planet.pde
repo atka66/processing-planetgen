@@ -3,15 +3,13 @@ class Planet {
   color[] palette;
   int[][] surface;
   
-  Planet () {
-    int planetSize = 32 * (1 + int(random(4)));
-    int paletteSize = (3 + int(random(2)));
-    
-    SurfaceGenerator generator = new SurfaceGenerator();
-    
-    this.surface = generator.generateTerrain(planetSize, planetSize);
-    
-    boolean hasLiquid = random(1) > 0.5;
+  private final int border = 5;
+  
+  Planet (int planetWidth, int planetHeight, int paletteSize) {
+    PaletteGenerator pGen = new PaletteGenerator();  
+    this.palette = pGen.generatePalette(paletteSize);
+    SurfaceGenerator sGen = new SurfaceGenerator();
+    this.surface = sGen.generateTerrain(planetWidth, planetHeight, paletteSize);
   }
   
   void drawPlanet(int x, int y, int scale) {
@@ -19,8 +17,21 @@ class Planet {
     scale(scale);
     for (int i = 0; i < this.surface.length; i++) {
       for (int j = 0; j < this.surface[i].length; j++) {
-        fill(this.surface[i][j] * 10);
-        square(i, j, 1);
+        fill(this.palette[this.surface[i][j]]);
+        square(j, i, 1);
+      }
+    }
+    drawOuter();
+  }
+  
+  private void drawOuter() {
+    int rad = this.surface.length / 2;
+    for (int i = 0; i < this.surface.length; i++) {
+      for (int j = 0; j < this.surface[i].length; j++) {
+        if (sq(j - rad) + sq(i - rad) >= sq(rad)) {
+          fill(g.backgroundColor);
+          square(j, i, 1); 
+        }
       }
     }
   }
