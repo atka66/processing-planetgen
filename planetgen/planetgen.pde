@@ -1,11 +1,11 @@
 Planet[] planets;
 
-int plCount = 4;
+int plCount = 5;
 color bg = color(0, 0, 0);
 int plWidth = 64;
 int plHeight = 64;
 int paletteSize = 10;
-int plScale = 4;
+int plScale = 3;
 
 void setup() {
   size(1200, 600, P2D);
@@ -23,7 +23,9 @@ void draw() {
 }
 
 void keyPressed() {
-  reconstructPlanets();
+  if (key == ' ') {
+    reconstructPlanets();
+  }
 }
 
 private void reconstructPlanets() {
