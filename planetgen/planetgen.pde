@@ -1,22 +1,33 @@
-Planet planet;
+Planet[] planets;
 
+int plCount = 4;
 color bg = color(0, 0, 0);
-int plWidth = 128;
-int plHeight = 128;
-int paletteSize = 7;
+int plWidth = 64;
+int plHeight = 64;
+int paletteSize = 10;
+int plScale = 4;
 
 void setup() {
-  size(1000, 600, P2D);
+  size(1200, 600, P2D);
   noStroke();
-  planet = new Planet(plWidth, plHeight, paletteSize);
+  planets = new Planet[plCount];
+  reconstructPlanets();
 }
 
 void draw() {
   background(bg);
-  planet.drawPlanet(16, 16, 1);
-  planet.drawPlanet(256, 32, 4);
+  for (int i = 0; i < plCount; i++) {
+    planets[i].drawPlanet(((i + 1) * 16) + (i * plWidth * plScale), 16, 1);
+    planets[i].drawPlanet(((i + 1) * 16) + (i * plWidth * plScale), 192, plScale);
+  }
 }
 
 void keyPressed() {
-  planet = new Planet(plWidth, plHeight, paletteSize);
+  reconstructPlanets();
+}
+
+private void reconstructPlanets() {
+  for (int i = 0; i < planets.length; i++) {
+    planets[i] = new Planet(plWidth, plHeight, paletteSize);
+  }
 }

@@ -1,10 +1,8 @@
 class SurfaceGenerator {
   
   private final int hillCount = 1000;
-  private final int hillRadMin = 5;
-  private final int hillRadMax = 20;
-  private final int hillHeightMin = 2;
-  private final int hillHeightMax = 5;
+  private final int hillRadMin = 1;
+  private final int hillRadMax = 10;
 
   public int[][] generateTerrain(int width, int height, int paletteSize) {
     int[][] result = new int[height][width];
@@ -19,12 +17,13 @@ class SurfaceGenerator {
     int hillRad = int(hillRadMin + random(hillRadMax - (hillRadMin - 1)));
     int hillX = int(random(terrain[0].length + (2 * hillRad)) - hillRad);
     int hillY = int(random(terrain.length + (2 * hillRad)) - hillRad);
-    int hillHeight = int(hillHeightMin + random(hillHeightMax - (hillHeightMin - 1)));
-    for (int i = hillY - hillRad; i < hillY + hillRad; i++) {
-      for (int j = hillX - hillRad; j < hillX + hillRad; j++) {
-        if (!isIndexOutOfBounds(i, terrain.length, j, terrain[0].length)) {
-          if (sq(j - hillX) + sq(i - hillY) < sq(hillRad)) {
-            terrain[i][j] += hillHeight;
+    for (int k = 1; k < hillRad; k++) {
+      for (int i = hillY - k; i < hillY + k; i++) {
+        for (int j = hillX - k; j < hillX + k; j++) {
+          if (!isIndexOutOfBounds(i, terrain.length, j, terrain[0].length)) {
+            if (Utils.isInsideCircle(j, hillX, i, hillY, hillRad)) {
+              terrain[i][j] += 1;
+            }
           }
         }
       }
