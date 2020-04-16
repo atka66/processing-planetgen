@@ -1,24 +1,25 @@
 Planet[] planets;
 
-int plCount = 5;
 color bg = color(0, 0, 0);
-int plWidth = 64;
-int plHeight = 64;
+int plSize = 64;
 int paletteSize = 10;
 int plScale = 3;
 
+int gCols = 4;
+int gRows = 5;
+
 void setup() {
-  size(1200, 600, P2D);
+  size(800, 1000, P2D);
   noStroke();
-  planets = new Planet[plCount];
+  planets = new Planet[gCols * gRows];
   reconstructPlanets();
 }
 
 void draw() {
   background(bg);
-  for (int i = 0; i < plCount; i++) {
-    planets[i].drawPlanet(((i + 1) * 16) + (i * plWidth * plScale), 16, 1);
-    planets[i].drawPlanet(((i + 1) * 16) + (i * plWidth * plScale), 192, plScale);
+  for (int i = 0; i < planets.length; i++) {
+    Planet p = planets[i];
+    p.drawPlanet((width / gCols) * (i % gCols), (height / gRows) * (i / gCols), plScale);
   }
 }
 
@@ -30,6 +31,8 @@ void keyPressed() {
 
 private void reconstructPlanets() {
   for (int i = 0; i < planets.length; i++) {
-    planets[i] = new Planet(plWidth, plHeight, paletteSize);
+    int w = int(random(32) + (plSize - 32));
+    int h = w;
+    planets[i] = new Planet(w, h, paletteSize);
   }
 }

@@ -13,7 +13,7 @@ class Planet {
     this.surface = sGen.generateTerrain(planetWidth, planetHeight, paletteSize);
   }
   
-  void drawPlanet(int x, int y, int scale) {
+  public void drawPlanet(int x, int y, int scale) {
     pushMatrix();
     translate(x, y);
     scale(scale);
@@ -63,5 +63,13 @@ class Planet {
         }
       }
     }
+  }
+  
+  public int getWidth() {
+    return this.surface[0].length;
+  }
+  
+  public int getHeight() {
+    return this.surface.length;
   }
 }
