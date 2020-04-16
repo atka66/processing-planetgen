@@ -1,12 +1,11 @@
 class SurfaceGenerator {
   
-  private final int hillCount = 1000;
   private final int hillRadMin = 1;
   private final int hillRadMax = 10;
 
   public int[][] generateTerrain(int width, int height, int paletteSize) {
     int[][] result = new int[height][width];
-    for (int i = 0; i < hillCount; i++) {
+    for (int i = 0; i < height * width; i++) {
       result = this.applyRandomHill(result);
     }
     result = this.flattenTerrain(result, paletteSize);
