@@ -1,8 +1,16 @@
 class PaletteGenerator {
+  final int r = 192;
+  final int g = 192;
+  final int b = 192;
+  
+  final int rL = 192;
+  final int gL = 192;
+  final int bL = 192;
+  
   public color[] generateRandomPalette(int paletteSize) {
     color[] result = new color[paletteSize];
     
-    result[paletteSize - 1] = color(random(256), random(256), random(256));
+    result[paletteSize - 1] = color(random(r), random(g), random(b));
     
     float dim = 0.9;
     for (int i = paletteSize - 2; i >= 0; i--) {
@@ -10,7 +18,7 @@ class PaletteGenerator {
     }
     if (random(1) > 0.2) {  
       int liquidStartIndex = int(random(paletteSize) - 1);
-      result[liquidStartIndex] = color(random(256), random(256), random(256));
+      result[liquidStartIndex] = color(random(rL), random(gL), random(bL));
       
       for (int i = liquidStartIndex - 1; i >= 0; i--) {
         result[i] = color(red(result[i + 1]) * dim, green(result[i + 1]) * dim, blue(result[i + 1]) * dim);
