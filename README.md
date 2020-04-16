@@ -13,8 +13,8 @@ Made with [Processing](https://processing.org/)
 * SPACEBAR - reconstruct planets
 
 ## Examples
-![Example 1](https://github.com/atka66/processing-planetgen/tree/master/img/pl1.png)
-![Example 2](https://github.com/atka66/processing-planetgen/tree/master/img/pl2.png)
-![Example 3](https://github.com/atka66/processing-planetgen/tree/master/img/pl3.png)
-![Example 4](https://github.com/atka66/processing-planetgen/tree/master/img/pl4.png)
-![Example 5](https://github.com/atka66/processing-planetgen/tree/master/img/pl5.png)
+![Example 1](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl1.PNG)
+![Example 2](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl2.PNG)
+![Example 3](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl3.PNG)
+![Example 4](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl4.PNG)
+![Example 5](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl5.PNG)
