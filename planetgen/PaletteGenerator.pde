@@ -17,7 +17,8 @@ class PaletteGenerator {
       result[i] = color(red(result[i + 1]) * dim, green(result[i + 1]) * dim, blue(result[i + 1]) * dim);     
     }
     if (random(1) > 0.2) {  
-      int liquidStartIndex = int(random(paletteSize) - 1);
+      int liquidStartIndex = int(random(paletteSize - 4) + 2);
+      System.out.println(liquidStartIndex + " - " + paletteSize);
       result[liquidStartIndex] = color(random(rL), random(gL), random(bL));
       
       for (int i = liquidStartIndex - 1; i >= 0; i--) {

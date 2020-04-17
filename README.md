@@ -13,13 +13,27 @@ Simple planet surface generator made with Processing.
 
 ### ..use the planet generator
 
+#### Hotkeys
+
 * 'h' - show/hide help
 * 'z' - enable/disable random planet sizes
 * 'q' - scale up
 * 'a' - scale down
 * 'e' - raise max size
 * 'd' - lower max size
-* SPACEBAR - reconstruct planets
+* SPACEBAR - reconstruct
+* 'g' - enable/disable spotlight mode
+* 'w' - double star count
+* 's' - halve star count
+
+#### Good to know
+
+* Planet size calculation: (**size** * 16) - 1
+* When **random planet size** is enabled, planets are given a random **size** variable between 1 and **max size** (this number will be the input in the calculation above)
+  * When disabled, all planets are given **max size** as their **size**
+* **spotlight mode** generates a starry background and only one planet in the middle of the screen
+  * Each star's brightness is a random value between (0-255)
+* Note that scaling down too much might affect performance
 
 ## Examples
 ![Example 1](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl1.PNG)

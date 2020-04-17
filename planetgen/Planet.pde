@@ -20,7 +20,7 @@ class Planet {
     if (random(1) > 0.3) {
       hasAtmos = true;
       this.atmosSur = sGen.generateTerrain(planetWidth, planetHeight, paletteSize);
-      this.atmosBorder = int(random(this.palette.length));
+      this.atmosBorder = int(random(this.palette.length - 4) + 2);
       this.atmosColor = color(int(random(64)) + 128, int(random(64)) + 128, int(random(64)) + 128);
     }
   }
