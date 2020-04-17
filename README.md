@@ -36,7 +36,7 @@ Simple planet surface generator made with Processing.
 * Note that scaling down too much might affect performance
 
 ## Examples
-![Example 1](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl1.PNG)
+![Example 1](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl6.PNG)
 ![Example 2](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl2.PNG)
 ![Example 3](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl3.PNG)
 ![Example 4](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl4.PNG)
