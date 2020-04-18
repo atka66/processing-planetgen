@@ -1,11 +1,27 @@
 class SurfaceGenerator {
   
-  private final int hillRadMin = 1;
-  private final int hillRadMax = 10;
+  private int hillRadMin;
+  private int hillRadMax;
+  private int hillCount;
+  
+  public SurfaceGenerator(int hillRadMin, int hillRadMax, int hillCount) {
+    this.hillRadMin = hillRadMin;
+    this.hillRadMax = hillRadMax;
+    this.hillCount = hillCount;
+  }
 
-  public int[][] generateTerrain(int width, int height, int paletteSize) {
-    int[][] result = new int[height][width];
-    for (int i = 0; i < height * width; i++) {
+  public int[][] generatePlanetSurface(int w, int h, int paletteSize) {
+    int[][] result = new int[h][w];
+    for (int i = 0; i < hillCount; i++) {
+      result = this.applyRandomHill(result);
+    }
+    result = this.flattenTerrain(result, paletteSize);
+    return result;
+  }
+  
+  public int[][] generateNebulaSurface(int w, int h, int paletteSize) {
+    int[][] result = new int[h][w];
+    for (int i = 0; i < hillCount; i++) {
       result = this.applyRandomHill(result);
     }
     result = this.flattenTerrain(result, paletteSize);

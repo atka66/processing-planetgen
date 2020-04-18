@@ -1,6 +1,6 @@
 # Processing Planet Generator
 
-Simple planet surface generator made with Processing.
+Simple planet surface generator made in Processing.
 
 ## How to..
 
@@ -31,16 +31,18 @@ Simple planet surface generator made with Processing.
 * Planet size calculation: (**size** * 16) - 1
 * When **random planet size** is enabled, planets are given a random **size** variable between 1 and **max size** (this number will be the input in the calculation above)
   * When disabled, all planets are given **max size** as their **size**
-* **spotlight mode** generates a starry background and only one planet in the middle of the screen
+* **spotlight mode** generates nebula, starry background and only one planet in the middle of the screen
   * Each star's brightness is a random value between (0-255)
+  * Nebula are yet to be customized
 * Note that scaling down too much might affect performance
 
 ## Examples
-![Example 1](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl6.PNG)
-![Example 2](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl2.PNG)
-![Example 3](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl3.PNG)
-![Example 4](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl4.PNG)
-![Example 5](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl5.PNG)
+![Example](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl7.PNG)
+![Example](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl6.PNG)
+![Example](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl2.PNG)
+![Example](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl3.PNG)
+![Example](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl4.PNG)
+![Example](https://raw.githubusercontent.com/atka66/processing-planetgen/master/img/pl5.PNG)
 
 ## Contribution
 

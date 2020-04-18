@@ -10,16 +10,16 @@ class Planet {
   
   private final int ambOccBorder = 1;
   
-  Planet (int planetWidth, int planetHeight, int paletteSize) {
+  Planet (int w, int h, int paletteSize) {
     PaletteGenerator pGen = new PaletteGenerator();  
     this.palette = pGen.generateRandomPalette(paletteSize);
     //this.palette = pGen.generateVulcanicPalette(paletteSize);
-    SurfaceGenerator sGen = new SurfaceGenerator();
-    this.surface = sGen.generateTerrain(planetWidth, planetHeight, paletteSize);
+    SurfaceGenerator sGen = new SurfaceGenerator(1, 10, w * h / 10);
+    this.surface = sGen.generatePlanetSurface(w, h, paletteSize);
     
     if (random(1) > 0.3) {
       hasAtmos = true;
-      this.atmosSur = sGen.generateTerrain(planetWidth, planetHeight, paletteSize);
+      this.atmosSur = sGen.generatePlanetSurface(w, h, paletteSize);
       this.atmosBorder = int(random(this.palette.length - 4) + 2);
       this.atmosColor = color(int(random(64)) + 128, int(random(64)) + 128, int(random(64)) + 128);
     }
@@ -35,31 +35,35 @@ class Planet {
     }
     this.drawCircleAmbientOcclusion();
     this.drawCircleShadow();
-    this.drawCircleOutside();
+    //this.drawCircleOutside();
     popMatrix();
   }
   
   private void drawSurface() {
+    int rad = this.surface.length / 2;
     for (int i = 0; i < this.surface.length; i++) {
       for (int j = 0; j < this.surface[i].length; j++) {
-        fill(this.palette[this.surface[i][j]]);
-        square(j, i, 1);
-      }
-    }
-  }
-  
-  private void drawAtmosphereSurface() {
-    for (int i = 0; i < this.atmosSur.length; i++) {
-      for (int j = 0; j < this.atmosSur[i].length; j++) {
-        int atmos = this.atmosSur[i][j];
-        if (atmos > atmosBorder) {
-          fill(red(atmosColor), green(atmosColor), blue(atmosColor), (255 / this.palette.length) * atmos);
+        if (Utils.isInsideCircle(j, rad, i, rad, rad)) {
+          fill(this.palette[this.surface[i][j]]);
           square(j, i, 1);
         }
       }
     }
   }
   
+  private void drawAtmosphereSurface() {
+    int rad = this.surface.length / 2;
+    for (int i = 0; i < this.atmosSur.length; i++) {
+      for (int j = 0; j < this.atmosSur[i].length; j++) {
+        int atmos = this.atmosSur[i][j];
+        if (Utils.isInsideCircle(j, rad, i, rad, rad) && atmos > atmosBorder) {
+          fill(red(atmosColor), green(atmosColor), blue(atmosColor), (255 / this.palette.length) * atmos);
+          square(j, i, 1);
+        }
+      }
+    }
+  }
+  /*
   private void drawCircleOutside() {
     int rad = this.surface.length / 2;
     for (int i = 0; i < this.surface.length; i++) {
@@ -71,12 +75,13 @@ class Planet {
       }
     }
   }
+  */
   
   private void drawCircleAmbientOcclusion() {
     int rad = this.surface.length / 2;
     for (int i = 0; i < this.surface.length; i++) {
       for (int j = 0; j < this.surface[i].length; j++) {
-        if (!Utils.isInsideCircle(j, rad, i, rad, rad - (ambOccBorder))) {
+        if (!Utils.isInsideCircle(j, rad, i, rad, rad - (ambOccBorder)) && Utils.isInsideCircle(j, rad, i, rad, rad)) {
           fill(0, 0, 0, 96);
           square(j, i, 1); 
         }
@@ -88,7 +93,7 @@ class Planet {
     int rad = this.surface.length / 2;
     for (int i = 0; i < this.surface.length; i++) {
       for (int j = 0; j < this.surface[i].length; j++) {
-        if (!Utils.isInsideCircle(j, rad + (rad / 4), i, 3 * rad / 4, (int)(rad * 0.9))) {
+        if (!Utils.isInsideCircle(j, rad + (rad / 4), i, 3 * rad / 4, (int)(rad * 0.9)) && Utils.isInsideCircle(j, rad, i, rad, rad)) {
           fill(0, 0, 0, 48);
           square(j, i, 1); 
         }
